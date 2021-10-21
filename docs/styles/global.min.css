@@ -1,2 +1,2 @@
-footer,header,main{margin:auto;max-width:980px;width:90%}#viewport{min-height:600px}
+body,html{height:100%}footer,header{margin:0 20px}body{display:flex;flex-direction:column;margin:0}body main{flex-grow:1}body main #viewport{height:100%;width:100%}
 /*# sourceMappingURL=global.min.css.map */

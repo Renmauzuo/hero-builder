@@ -26,8 +26,5 @@
     "postcss-import": "^14.0.2",
     "promised-del": "^1.0.2",
     "rollup-plugin-babel": "^4.4.0"
-  },
-  "devDependencies": {
-    "three": "^0.133.1"
   }
 }
