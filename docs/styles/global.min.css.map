@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles/global.scss"],"names":[],"mappings":"AAAA,mBAGC,WAAY,CAFZ,eAAgB,CAChB,SACY,CAGb,UACI,gBAAiB","file":"global.min.css","sourcesContent":["header, footer, main {\r\n\tmax-width: 980px;\r\n\twidth: 90%;\r\n\tmargin: auto;\r\n}\r\n\r\n#viewport {\r\n    min-height: 600px;\r\n}\r\n\r\n"]}
