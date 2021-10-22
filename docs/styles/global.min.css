@@ -1,2 +1,2 @@
-body,html{height:100%}footer,header{margin:0 20px}body{display:flex;flex-direction:column;margin:0}body main{flex-grow:1}body main #viewport{height:100%;width:100%}
+body,html{height:100%}footer,header{margin:0 20px}body{display:flex;flex-direction:column;margin:0}body main{flex-grow:1;margin-bottom:10px}body main #viewport{height:100%;width:100%}
 /*# sourceMappingURL=global.min.css.map */
