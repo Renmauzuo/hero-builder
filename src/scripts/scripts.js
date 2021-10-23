@@ -1,4 +1,16 @@
-var exporter, scene, link;
+var exporter, scene, link, character, weapon, weaponBone, loader;
+
+const weapons = {
+    longsword: {
+        model: 'Longsword'
+    },
+    mace: {
+        model: 'Mace'
+    },
+    maul: {
+        model: 'Maul'
+    }
+}
 
 $(function () {
     link = document.createElement( 'a' );
@@ -6,7 +18,7 @@ $(function () {
     document.body.appendChild( link );
     link.download = 'scene.stl';
 
-    const loader = new THREE.GLTFLoader();
+    loader = new THREE.GLTFLoader();
     exporter = new THREE.STLExporter();
 
     let animationWidth = $('#viewport').width();
@@ -42,14 +54,17 @@ $(function () {
     }
     animate();
 
-    let model = 'Female-Body-Rigged-NEW';
+    let model = 'Female-Rigged-2';
+    //let model = 'Female-Body-Rigged-NEW';
     //let model = 'Dwarf-Female-Druid-2';
-    loader.load( 'models/characters/'+model+'.glb', function ( gltf ) {
+    loader.load( '../models/characters/'+model+'.glb', function ( gltf ) {
         gltf.scene.traverse( child => {
 
             if ( child.material ) child.material.metalness = 0;
         
         } );
+        character = gltf.scene.children[0];
+        weaponBone = character.children[0];
         scene.add( gltf.scene );
 
     
@@ -58,6 +73,9 @@ $(function () {
         console.error( error );
     
     } );
+
+    $('#weapon-select').on('change', updateCharacterWeapon);
+
 });
 
 function downloadSTL() {
@@ -66,4 +84,31 @@ function downloadSTL() {
     let blob = new Blob( [ result ], { type: 'application/octet-stream' } );
     link.href = URL.createObjectURL( blob );
     link.click();
+}
+
+function updateCharacterWeapon () {
+    //Remove old weapon
+    weaponBone.remove(weapon);
+    let target = $('#weapon-select').val();
+    if (target.length) {
+
+        let model = weapons[target].model;
+        loader.load( '../models/weapons/'+model+'.glb', function ( gltf ) {
+            gltf.scene.traverse( child => {
+    
+                if ( child.material ) child.material.metalness = 0;
+            
+            } );
+            weapon = gltf.scene.children[0];
+            weapon.rotation.set(3.14159, 0, 0);
+            weapon.position.set(.1,.1,-0.1);
+            let weaponScale = .1;
+            weapon.scale.set(weaponScale, weaponScale, weaponScale);
+            weaponBone.add( weapon );
+        }, undefined, function ( error ) {
+        
+            console.error( error );
+        
+        } );
+    }
 }

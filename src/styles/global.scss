@@ -12,12 +12,20 @@ body {
     margin: 0;
 
     main {
+        display: flex;
+        flex-direction: column;
         flex-grow: 1;
-        margin-bottom: 10px;
+        align-items: flex-start;
 
         #viewport {
             width: 100%;
+            flex-grow: 1;
             height: 100%;
+            margin-bottom: 20px;
+        }
+
+        > :not(#viewport) {
+            margin: 0 20px;
         }
     }
 }
