@@ -57,7 +57,7 @@ $(function () {
     let model = 'Female-Rigged-2';
     //let model = 'Female-Body-Rigged-NEW';
     //let model = 'Dwarf-Female-Druid-2';
-    loader.load( '../models/characters/'+model+'.glb', function ( gltf ) {
+    loader.load( 'models/characters/'+model+'.glb', function ( gltf ) {
         gltf.scene.traverse( child => {
 
             if ( child.material ) child.material.metalness = 0;
@@ -93,7 +93,7 @@ function updateCharacterWeapon () {
     if (target.length) {
 
         let model = weapons[target].model;
-        loader.load( '../models/weapons/'+model+'.glb', function ( gltf ) {
+        loader.load( 'models/weapons/'+model+'.glb', function ( gltf ) {
             gltf.scene.traverse( child => {
     
                 if ( child.material ) child.material.metalness = 0;
