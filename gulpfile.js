@@ -13,11 +13,11 @@ const $ = gulpLoadPlugins();
 const development = $.environments.development;
 const production = $.environments.production;
 
-const clean = () => gulp.parallel(cleanCSS, cleanHTML, cleanJS, cleanImg);
 const cleanCSS = () => promisedDel('docs/**/*.css');
 const cleanHTML = () => promisedDel('docs/**/*.html');
 const cleanJS = () => promisedDel('docs/**/*.js');
 const cleanImg = () => promisedDel('docs/**/*.PNG');
+const clean = gulp.parallel(cleanCSS, cleanHTML, cleanJS, cleanImg);
 
 const html = () =>
 	gulp.src('src/pages/**/*.pug', { base: 'src/pages/' })
